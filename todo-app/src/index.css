@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --color-solo-bg: #0B0F19;
+  --color-solo-primary: #00EAFF;
+  --color-solo-danger: #FF003C;
+
+  --font-cinzel: Cinzel, serif;
+  --font-orbitron: Orbitron, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-solo-bg);
+    color: white;
+    font-family: var(--font-orbitron), sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-solo-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--color-solo-primary) 30%, transparent);
+  border-radius: 9999px;
+  transition: background-color 0.15s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--color-solo-primary) 60%, transparent);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-glitch {
+  animation: glitch 0.3s infinite;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.animate-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5), 0 0 20px rgba(0, 234, 255, 0.3);
+}
+
+.scanline-overlay::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+}
